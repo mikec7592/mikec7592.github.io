@@ -5,13 +5,16 @@ $(() => {
 
     $('td').on('click', onChoiceClick) 
 
+    $('form').on('submit', onSubmit)
 })
 
-
+let $form = $('<form/>')
 const createBoard = () => {
     let amount = 100;
 
     $('<table><thead><tbody><tr>').appendTo('body')
+    $('<form>').appendTo('body')
+    // $('<input type="radio"').appendTo('form')
 
     for (let i = 0; i < 4; i++){
         $('<tr>').attr('id', amount).appendTo('tbody');
@@ -32,12 +35,27 @@ const onChoiceClick  = (event) => {
     console.log(catQuestions)
     $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
     // on click radio buttons with answers are sent to a div below the table
-    $(event.currenTarget).on('click', ()=> {
-      for  (let i = 0; i < 3; i++) {
-        ('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]"').appendTo('#answerDiv')
+    
+        // $form.appendTo('body')
+      for  (let i = 0; i < catQuestions[name][value].Answers.length; i++) {
+        $('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]">').appendTo('form')
+        $('<label for="catQuestions[name][value].Answers[i]">').text(catQuestions[name][value].Answers[i]).appendTo('form')
     }
+    $('<input type="submit" value="Submit">').appendTo('form')
     // answering()
-})
+}
+
+const onSubmit = (event) => {
+    event.preventDefault()
+}
+
+100: {
+    Question: 'Molecular structure of water',
+    Answers: {
+        'h2o2': {
+            value: true
+        }
+    }
 }
 
 
@@ -48,7 +66,16 @@ const catQuestions = {
     'science': {
         100: {
             Question: 'Molecular structure of water',
-            Answers: ['h2o2', 'h20', 'ho2']
+            Answers: {
+                'h2o2': {
+                    value: false
+                },
+                 'h20': {
+                     value: true
+                 }, 
+                 'ho2': {
+                     value: false
+                 }
         },
         200: {
             Question: 'Your body produces this in high quantity when sick',
