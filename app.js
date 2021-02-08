@@ -26,36 +26,42 @@ const createBoard = () => {
     }
 }
 
+const fillForm = () => {
+    for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
+        console.log(Object.keys(catQuestions[name][value].Answers)[i])
+      $('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]">').appendTo('form')
+      $('<label for="catQuestions[name][value].Answers[i]">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
+
+  }
+  $('<input type="submit" value="Submit">').appendTo('form')
+}
+
+
 const onChoiceClick  = (event) => {
     console.log(event.currentTarget.id);
     let category = (event.target.id).split(' ');
     let name = category[0];
     let value = category[1];
-
+        
     console.log(catQuestions)
     $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
     // on click radio buttons with answers are sent to a div below the table
-    
+                console.log(catQuestions[name][value].Answers.length)
         // $form.appendTo('body')
-      for  (let i = 0; i < catQuestions[name][value].Answers.length; i++) {
+      for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
+          console.log(Object.keys(catQuestions[name][value].Answers)[i])
         $('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]">').appendTo('form')
-        $('<label for="catQuestions[name][value].Answers[i]">').text(catQuestions[name][value].Answers[i]).appendTo('form')
+        $('<label for="catQuestions[name][value].Answers[i]">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
+
     }
     $('<input type="submit" value="Submit">').appendTo('form')
     // answering()
 }
 
 const onSubmit = (event) => {
+    console.log()
     event.preventDefault()
-}
-
-100: {
-    Question: 'Molecular structure of water',
-    Answers: {
-        'h2o2': {
-            value: true
-        }
-    }
+    $('form').children().remove()
 }
 
 
@@ -76,24 +82,65 @@ const catQuestions = {
                  'ho2': {
                      value: false
                  }
-        },
-        200: {
-            Question: 'Your body produces this in high quantity when sick',
-            Answers: ['Red blood cells', 'White blood cells', 'Platelets'],
-        },
-        300: {
-            Question: 'This kind of acid builds up in your body when exercising',
-            Answers: ['Sulfuric acid', 'phospherous acid,', 'Lactic acid'],
-        },
-        400: {
-            Question: 'example question',
-            Answers: ['answer1', 'answer2', 'answer3'],
-        },
-        500: {
-            Question: '500 example question',
-            Answers: ['answer1', 'answer2', 'answer3'],
         }
     },
+        200: {
+            Question: 'Your body produces this in high quantity when sick',
+            Answers: {
+                'Red blood cells': {
+                    value: false
+                }, 
+                'White blood cells': {
+                    value: true 
+                }, 
+                'Platelets': {
+                    value: false
+                },
+        }
+    },
+        300: {
+            Question: 'This kind of acid builds up in your body when exercising',
+            Answers: {
+                'Sulfuric acid': {
+                    value: false
+                }, 
+                'phospherous acid': {
+                    value: false
+                }, 
+                'Lactic acid': {
+                    value: true
+                },
+        }
+    },
+        400: {
+            Question: 'example question',
+            Answers: {
+                'answer1': {
+                    value: true
+                }, 
+                'answer2': {
+                    value: false
+                }, 
+                'answer3': {
+                    value: false
+                },
+        }
+    },
+        500: {
+            Question: '500 example question',
+            Answers: {
+                'answer1': {
+                    value: false
+                }, 
+                'answer2': {
+                    value: false
+                }, 
+                'answer3': {
+                    value: true
+                },
+        }
+    },
+},
     'Math': {
         100: {
             Question: 'You have 2 apples I take away 1 orange. How many apples do you have left?',
@@ -163,7 +210,7 @@ const catQuestions = {
 }
     
     
-    
+// console.log(catQuestions.science)
 
    
         
