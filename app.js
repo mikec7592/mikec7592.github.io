@@ -1,15 +1,58 @@
 console.log('yyyuurrr')
 
+$(() => {
+    createBoard()
+
+    $('td').on('click', onChoiceClick) 
+
+})
+
+
+const createBoard = () => {
+    let amount = 100;
+
+    $('<table><thead><tbody><tr>').appendTo('body')
+
+    for (let i = 0; i < 4; i++){
+        $('<tr>').attr('id', amount).appendTo('tbody');
+        $('<th>').addClass('box').text(Object.keys(catQuestions)[i]).appendTo('thead');
+        for (let j = 0; j < 4; j++) {
+            $('<td>').addClass('box').attr('id', Object.keys(catQuestions)[j]+ ' ' + amount).text(amount).appendTo('#' + amount);
+        } 
+        amount += 100;
+    }
+}
+
+const onChoiceClick  = (event) => {
+    console.log(event.currentTarget.id);
+    let category = (event.target.id).split(' ');
+    let name = category[0];
+    let value = category[1];
+
+    console.log(catQuestions)
+    $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
+    // on click radio buttons with answers are sent to a div below the table
+    $(event.currenTarget).on('click', ()=> {
+      for  (let i = 0; i < 3; i++) {
+        ('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]"').appendTo('#answerDiv')
+    }
+    // answering()
+})
+}
+
+
+
 // //////    OBJECTS    \\\\\\\\\\
-const catQuestions =  {
-    science: {
-        100: { 
+
+const catQuestions = {
+    'science': {
+        100: {
             Question: 'Molecular structure of water',
             Answers: ['h2o2', 'h20', 'ho2']
         },
         200: {
             Question: 'Your body produces this in high quantity when sick',
-            Answers: [ 'Red blood cells','White blood cells', 'Platelets'],
+            Answers: ['Red blood cells', 'White blood cells', 'Platelets'],
         },
         300: {
             Question: 'This kind of acid builds up in your body when exercising',
@@ -21,11 +64,12 @@ const catQuestions =  {
         },
         500: {
             Question: '500 example question',
-            Answers: ['answer1', 'answer2','answer3'],
+            Answers: ['answer1', 'answer2', 'answer3'],
+        }
     },
-    Math: {
+    'Math': {
         100: {
-            Question: 'You have 2 apples I take away 1 orange.  How many apples do you have left?',
+            Question: 'You have 2 apples I take away 1 orange. How many apples do you have left?',
             Answers: ['3', '1', '2'],
         },
         200: {
@@ -38,34 +82,36 @@ const catQuestions =  {
         },
         400: {
             Question: ' ',
-            Answers: [' ' ],
+            Answers: [' '],
         },
         500: {
             Question: 'What\'s 9 + 10?',
             Answers: ['21', '9', '19'],
+        }
     },
-    Anime: {
-        100: { 
+    'Anime': {
+        100: {
             Question: 'In this anime there are 7 golden spheres to collect',
             Answers: ['Ball Collecting Adventure 2', 'Dragonball', 'Dragon Tails'],
         },
         200: {
-            Question:'This character from naruto is most famous for his signature Rasengan',
+            Question: 'This character from naruto is most famous for his signature Rasengan',
             Answers: ['Chidori', 'Sasuke', 'Naruto'],
         },
         300: {
-            Question: ' ', 
+            Question: ' ',
             Answers: [' '],
         },
         400: {
             Question: ' ',
-            Answers: [' ']
+            Answers: [' '],
         },
-        500:{
+        500: {
             Question: 'This anime is commonly known as the greatest anime of all time',
             Answers: ['Steins;Gate', 'Steins; Gate', 'Steins; Gate'],
-        },
-    videoGames: {
+        }
+    },
+    'videoGames': {
         100: {
             Question: 'A popular battle royale featuring pinatas and building',
             Answers: ['Fork Knife', 'Viva Pinata', 'Fortnite'],
@@ -79,15 +125,17 @@ const catQuestions =  {
             Answers: ['Mario', 'Zelda', 'Link'],
         },
         400: {
-            Question: '  ',
-            Answers:[' '],
-        },
-        500: {
             Question: ' ',
             Answers: [' '],
         },
-    },
-},
+        500: {
+            Question: ' ',
+            Answers: [' ']
+        }
+    }
+}
+    
+    
     
 
    
@@ -115,64 +163,70 @@ const catQuestions =  {
 
 
 
-const onChoiceClick  = (event) => {
-    console.log($(event.currentTarget))
-    $(event.currentTarget).addClass('selected')
-    answering()
-}
 
 
-const answering = (currentPlayer) => {
-    if (correctAnswer = true) {
-        alert('You were correct.  Chose another question.')
-        // currentPlayer score ++
-    } else {
-        alert('That was incorrect! Next players turn.') 
-        // switch player
-    }
-}
+
+// const answering = (currentPlayer) => {
+//     if (correctAnswer = true) {
+//         alert('You were correct.  Chose another question.')
+//         // currentPlayer score ++
+//     } else {
+//         alert('That was incorrect! Next players turn.') 
+//         // switch player
+//     }
+// }
  
 
 
 
 
 
-$(() => {
-    createBoard()
-    // $('table').on('click', eventTest)
-    $('td').on('click', onChoiceClick) 
-
-})
 
 
+// const createBoard = () => {
+//     let amount = 100;
 
-const createBoard = () => {
-    for (let i = 0; i < 6; i++) {
-        for (let j = 0; j < 6; j++) {
-            switch(i) {
-            case 0: 
-                $('<div>').attr('id', 'cat' + j).appendTo('#container')
-                break;
-            case 1:
-                $('<div>').attr('id', 'science' + j).appendTo('#container')
-                break;
-            case 2:
-                $('<div>').attr('id', 'CAT3' + j).appendTo('#container')
-                break;
-            case 3:
-                $('<div>').attr('id', 'CAT4' + j).appendTo('#container')
-                break;
-            case 4:
-                $('<div>').attr('id', 'CAT5' + j).appendTo('#container')
+//     $('<table><thead><tbody><tr>').appendTo('body')
+
+//     for (let i = 0; i < 4; i++){
+//         $('<tr>').attr('id', amount).appendTo('tbody')
+//         $('<th>').addClass('box').text(Object.keys(catQuestions)[i]).appendTo('thead')
+//         for (let j = 0; j < 4; j++) {
+//             $('<td>').addClass('box').attr('id', Object.keys(catQuestions)[j]+ ' ' + amount).text(amount).appendTo('#' + amount)
+//         } 
+//         amount += 100
+//     }
+// }
+
+
+
+// const createBoard = () => {
+//     for (let i = 0; i < 6; i++) {
+//         for (let j = 0; j < 6; j++) {
+//             switch(i) {
+//             case 0: 
+//                 $('<div>').attr('id', 'cat' + j).appendTo('#container')
+//                 break;
+//             case 1:
+//                 $('<div>').attr('id', 'science' + j).appendTo('#container')
+//                 break;
+//             case 2:
+//                 $('<div>').attr('id', 'CAT3' + j).appendTo('#container')
+//                 break;
+//             case 3:
+//                 $('<div>').attr('id', 'CAT4' + j).appendTo('#container')
+//                 break;
+//             case 4:
+//                 $('<div>').attr('id', 'CAT5' + j).appendTo('#container')
                         
-            }    
-        } 
-    }
-}
+//             }    
+//         } 
+//     }
+// }
 
 
-let player1;
-let player2;
+// let player1;
+// let player2;
 
 // const onChoiceClick  = (event) => {
 //     console.log($(event.currentTarget))
@@ -190,4 +244,4 @@ let player2;
 //         // switch player
 //     }
 // }
- 
+// 
