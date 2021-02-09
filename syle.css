@@ -38,12 +38,12 @@ td, div {
     border: 5px solid firebrick;
     height: 100px;
     width: 100px;
-    color: gold;
+    color: firebrick;
 }
 
 .selected {
-    background: yellowgreen;
-
+    background: forestgreen;
+    pointer-events: none;
 }
 
 .answered {
