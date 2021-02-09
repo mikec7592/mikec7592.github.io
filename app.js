@@ -1,7 +1,11 @@
 console.log('yyyuurrr')
 
+let currentBox;
+let score;
+
 $(() => {
     createBoard()
+
 
     $('td').on('click', onChoiceClick) 
 
@@ -42,18 +46,17 @@ const onChoiceClick  = (event) => {
     let category = (event.target.id).split(' ');
     let name = category[0];
     let value = category[1];
-        
-    console.log(catQuestions)
     $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
+    currentBox = $(event.currentTarget);
     // on click radio buttons with answers are sent to a div below the table
         // $form.appendTo('body')
       for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
         let answer = Object.keys(catQuestions[name][value].Answers)[i];
         let answerValue = Object.values(catQuestions[name][value].Answers)[i].value;
-        $('<input type ="radio" name="Answers" value="'+ answerValue +'">').appendTo('form')
+        $('<input type ="radio" name="Answers" value="'+ answerValue +'" required>').appendTo('form')
         $('<label for="' + answer +'">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
-    }
-    $('<input type="submit" value="Submit">').appendTo('form')
+    } 
+    $('<input type="submit" value="Submit" >').appendTo('form')
     // answering()
 }
 
@@ -61,9 +64,15 @@ const onSubmit = (event) => {
     console.log()
     event.preventDefault()
     let $selection = $('input[name = Answers]:checked', 'form').val()
-    console.log($selection)
+    if($selection === 'true') {
+        $(currentBox).removeClass('selected').addClass('correct').text('')
+    } 
+    else {$(currentBox).removeClass('selected').addClass('incorrect').text('');}
+
     $('form').children().remove()
+    
 }
+
 
 
 
