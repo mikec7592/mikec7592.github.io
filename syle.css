@@ -1,5 +1,7 @@
 body {
     align-content: center;
+    background-image: url(https://www.jeopardy.com/sites/default/files/social_meta/background.jpg);
+    
 }
 
 #container {
@@ -24,7 +26,7 @@ table {
     margin-right: auto;
 }
 
-td, div {
+td {
     justify-content: center;
     align-content: center;
     background: dodgerblue;
@@ -38,11 +40,12 @@ td, div {
 }
 
 #categories, th {
-    background: whitesmoke;
     border: 5px solid firebrick;
     height: 100px;
     width: 100px;
     color: firebrick;
+    font-size: larger;
+    text-transform: uppercase;
 }
 
 .selected {
@@ -59,15 +62,32 @@ form {
     display: block;
     height: 200px;
     width: 670px;
-    background: goldenrod;
+    font-size: larger;
     margin-left: auto;
     margin-right: auto;
+    background-image: url(https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm21-background-tong-058.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=710a6fed5b1923da8d5f95191839ef8a);
 }
 
 .correct {
     background: forestgreen;
+    font-size: 80px;
 }
 
 .incorrect {
     background: tomato;
+    font-size: 80px;
+}
+
+th {
+    background-color:black;
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20190828/pngtree-dark-vector-abstract-background-image_302715.jpg);
+}
+
+#title {
+    height: 100px;
+    width: 600px;
+}
+
+span {
+    background: whitesmoke
 }

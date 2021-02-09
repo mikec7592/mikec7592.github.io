@@ -2,15 +2,18 @@ console.log('yyyuurrr')
 
 let currentBox;
 let score;
+let points = 0
 
 $(() => {
     createBoard()
 
+    $('button').on('click', location.reload)
 
     $('td').on('click', onChoiceClick) 
 
     $('form').on('submit', onSubmit)
 })
+
 
 let $form = $('<form/>')
 const createBoard = () => {
@@ -18,7 +21,8 @@ const createBoard = () => {
 
     $('<table><thead><tbody><tr>').appendTo('body')
     $('<form>').appendTo('body')
-    // $('<input type="radio"').appendTo('form')
+    $('<div>').attr('id', 'title').text('Jeopardy').append('thead')
+    $('<input type ="button" value="Reset" onClick="window.location.reload();">').appendTo('body')
 
     for (let i = 0; i < 4; i++){
         $('<tr>').attr('id', amount).appendTo('tbody');
@@ -65,9 +69,11 @@ const onSubmit = (event) => {
     event.preventDefault()
     let $selection = $('input[name = Answers]:checked', 'form').val()
     if($selection === 'true') {
-        $(currentBox).removeClass('selected').addClass('correct').text('')
+        $(currentBox).removeClass('selected').addClass('correct').text('O')
+        // points += parseint(value)
+        console.log(points)
     } 
-    else {$(currentBox).removeClass('selected').addClass('incorrect').text('');}
+    else {$(currentBox).removeClass('selected').addClass('incorrect').text('X');}
 
     $('form').children().remove()
     
