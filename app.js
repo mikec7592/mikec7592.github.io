@@ -1,9 +1,14 @@
 console.log('yyyuurrr')
 
+// ///////////////////     Global Variables     \\\\\\\\\\\\\\\\\\\
+
 let currentBox;
 let score;
 let points = 0
 let value; 
+
+
+
 $(() => {
     createBoard()
 
@@ -34,15 +39,6 @@ const createBoard = () => {
     }
 }
 
-const fillForm = () => {
-    for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
-        console.log(Object.keys(catQuestions[name][value].Answers)[i])
-      $('<input type ="radio" name="Answers" value="catQuestions[name][value].Answers[i]">').appendTo('form')
-      $('<label for="catQuestions[name][value].Answers[i]">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
-
-  }
-  $('<input type="submit" value="Submit">').appendTo('form')
-}
 
 
 const onChoiceClick  = (event) => {
@@ -57,7 +53,7 @@ const onChoiceClick  = (event) => {
       for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
         let answer = Object.keys(catQuestions[name][value].Answers)[i];
         let answerValue = Object.values(catQuestions[name][value].Answers)[i].value;
-        $('<input type ="radio" name="Answers" value="'+ answerValue +'" required>').appendTo('form')
+        $('<input type ="radio" name="Answers" value="'+ answerValue +'"required>').appendTo('form')
         $('<label for="' + answer +'">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
     } 
     $('<input type="submit" value="Submit" >').appendTo('form')
@@ -383,16 +379,6 @@ const catQuestions = {
 
 
 
-// const answering = (currentPlayer) => {
-//     if (correctAnswer = true) {
-//         alert('You were correct.  Chose another question.')
-//         // currentPlayer score ++
-//     } else {
-//         alert('That was incorrect! Next players turn.') 
-//         // switch player
-//     }
-// }
- 
 
 
 
