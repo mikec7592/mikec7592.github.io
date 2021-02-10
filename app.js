@@ -3,7 +3,7 @@ console.log('yyyuurrr')
 let currentBox;
 let score;
 let points = 0
-
+let value; 
 $(() => {
     createBoard()
 
@@ -15,7 +15,7 @@ $(() => {
 })
 
 
-let $form = $('<form/>')
+
 const createBoard = () => {
     let amount = 100;
 
@@ -49,11 +49,11 @@ const onChoiceClick  = (event) => {
     console.log(event.currentTarget.id);
     let category = (event.target.id).split(' ');
     let name = category[0];
-    let value = category[1];
+    value = category[1];
     $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
     currentBox = $(event.currentTarget);
-    // on click radio buttons with answers are sent to a div below the table
-        // $form.appendTo('body')
+    console.log(value)
+
       for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
         let answer = Object.keys(catQuestions[name][value].Answers)[i];
         let answerValue = Object.values(catQuestions[name][value].Answers)[i].value;
@@ -61,7 +61,6 @@ const onChoiceClick  = (event) => {
         $('<label for="' + answer +'">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
     } 
     $('<input type="submit" value="Submit" >').appendTo('form')
-    // answering()
 }
 
 const onSubmit = (event) => {
@@ -70,10 +69,12 @@ const onSubmit = (event) => {
     let $selection = $('input[name = Answers]:checked', 'form').val()
     if($selection === 'true') {
         $(currentBox).removeClass('selected').addClass('correct').text('O')
-        // points += parseint(value)
-        console.log(points)
+        points += parseInt(value)
+        alert('You were correct!  Current score: ' + points)
     } 
-    else {$(currentBox).removeClass('selected').addClass('incorrect').text('X');}
+    else {$(currentBox).removeClass('selected').addClass('incorrect').text('X');
+        alert('Sorry, looks like that was incorrect. Current score: '+ points)
+    }
 
     $('form').children().remove()
     

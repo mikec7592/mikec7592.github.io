@@ -89,5 +89,12 @@ th {
 }
 
 span {
-    background: whitesmoke
+    background: whitesmoke;
+    height: 20px;
+    width: 50px;
+}
+
+#scoreBox {
+    height: 30px;
+    width: 50px;
 }
