@@ -71,11 +71,13 @@ form {
 .correct {
     background: forestgreen;
     font-size: 80px;
+    pointer-events: none;
 }
 
 .incorrect {
     background: tomato;
     font-size: 80px;
+    pointer-events: none;
 }
 
 th {

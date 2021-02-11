@@ -79,7 +79,7 @@ const onSubmit = (event) => {
 
 
 
-// //////    OBJECTS    \\\\\\\\\\
+// //////    OBJECT    \\\\\\\\\\
 
 const catQuestions = {
     'science': {
@@ -126,29 +126,29 @@ const catQuestions = {
         }
     },
         400: {
-            Question: 'example question',
+            Question: 'The state of matter with the highest energy',
             Answers: {
-                'answer1': {
+                'Gas': {
                     value: true
                 }, 
-                'answer2': {
+                'Liquid': {
                     value: false
                 }, 
-                'answer3': {
+                'Solid': {
                     value: false
                 },
         }
     },
         500: {
-            Question: '500 example question',
+            Question: 'When compared to an apple hanging in a tree, a rock on the ground would have much less',
             Answers: {
-                'answer1': {
+                'Static Energy': {
                     value: false
                 }, 
-                'answer2': {
+                'Kinetic Energy': {
                     value: false
                 }, 
-                'answer3': {
+                'Potential Energy': {
                     value: true
                 },
         }
@@ -196,15 +196,15 @@ const catQuestions = {
         },
     },
         400: {
-            Question: ' ',
+            Question: 'a^2 + b^2 = c^2 is known as what ',
             Answers: {
-                'apple': {
+                'Polyhedron Formula': {
                     value: false
                 },
-                'mango': {
+                'Pythagorean Theorem': {
                     value: true
                 },
-                'potato': {
+                'Law of Quadratic Reciprocity': {
                     value: false
                 }
         },
@@ -254,29 +254,29 @@ const catQuestions = {
         },
     },
         300: {
-            Question: ' ',
+            Question: 'This anime feratures scouts equipped with swords, zipping around while fighting giant humaanoids',
             Answers: {
-                'your': {
+                'King Slayer': {
                     value: false
                 },
-                'hello': {
+                'Attack on Titan': {
                     value: true
                 },
-                'toes': {
+                'God Eater': {
                     value: false
                 }
         },
     },
         400: {
-            Question: ' ',
+            Question: 'This anime features an eldery hero who is partly robotic',
             Answers: {
-                 'son ': {
+                 'Inuyashiki ': {
                      value: true
                  },
-                 'kai ': {
+                 'G Gundam': {
                      value: false
                  },
-                 'yyuurr': {
+                 'Hinamatsuri': {
                      value: false
                  }
         },
@@ -340,15 +340,15 @@ const catQuestions = {
         },
     },
         400: {
-            Question: ' ',
+            Question: 'In this series you battle a subterranean species called Locust',
             Answers: {
-                'tinos': {
+                'The Underground': {
                     value: false
                 },
-                'binos': {
+                'Neon Abyss': {
                     value: false
                 },
-                'minos': {
+                'Gears of War': {
                     value: true
                 },
         },
