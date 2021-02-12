@@ -41,6 +41,7 @@ const createBoard = () => {
 
 
 
+
 const onChoiceClick  = (event) => {
     console.log(event.currentTarget.id);
     let category = (event.target.id).split(' ');
@@ -69,6 +70,7 @@ const onSubmit = (event) => {
         alert('You were correct!  Current score: ' + points)
     } 
     else {$(currentBox).removeClass('selected').addClass('incorrect').text('X');
+        points += parseInt(value)
         alert('Sorry, looks like that was incorrect. Current score: '+ points)
     }
 
@@ -354,15 +356,15 @@ const catQuestions = {
         },
     },
         500: {
-            Question: ' ',
+            Question: 'This game featuring an IMPOSTER gained mass popularity in 2020',
             Answers: {
-                'ggrrr': {
+                'It Lies Below': {
                     value: false
                 },
-                'yyuurrr': {
+                'Among Us': {
                     value: true
                 },
-                'skurskur': {
+                'Alien Hominid': {
                     value: false
                 }
         }
