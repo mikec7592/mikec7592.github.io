@@ -29,12 +29,14 @@ const createBoard = () => {
     $('<div>').attr('id', 'title').text('Jeopardy').append('thead')
     $('<input type ="button" value="Reset" onClick="window.location.reload();">').appendTo('body')
 
-    for (let i = 0; i < 4; i++){
+    for (let i = 0; i < 5; i++) {
         $('<tr>').attr('id', amount).appendTo('tbody');
-        $('<th>').addClass('box').text(Object.keys(catQuestions)[i]).appendTo('thead');
-        for (let j = 0; j < 4; j++) {
-            $('<td>').addClass('box').attr('id', Object.keys(catQuestions)[j]+ ' ' + amount).text(amount).appendTo('#' + amount);
-        } 
+        if(Object.keys(catQuestions)[i] != null) {
+            $('<th>').addClass('box').text(Object.keys(catQuestions)[i]).appendTo('thead');
+        }
+        for(let j = 0; j < 4; j++) {
+            $('<td>').addClass('box').attr("id", Object.keys(catQuestions)[j] + " " + amount).text(amount).appendTo('#' + amount);
+        }
         amount += 100;
     }
 }
