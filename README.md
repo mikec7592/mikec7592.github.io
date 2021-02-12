@@ -16,6 +16,7 @@ While going through this project please keep in mind that this is a work in prog
 ### How It Works
 Boxes are labeled by point value and fall into 4 different categories.  Clicking on a box reveals a question as well as 3 possible answers.  Choosing the correct answer will net you the point value on the face of the clicked box.  Chosing the incorrect answer will decrease your score by the face value.
 
+<img src="https://github.com/mikec7592/mikec7592.github.io/blob/main/img/img1.png" width="300" height="200">
 
 ### Win Conditions
 
