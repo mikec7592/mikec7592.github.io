@@ -1,6 +1,6 @@
 # mikec7592.github.io
 
-## My First Project.  Jeopardy
+## My First Project -Jeopardy
 
 ### Completely done in Javascript
 
