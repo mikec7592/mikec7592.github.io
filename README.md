@@ -22,6 +22,8 @@ Boxes are labeled by point value and fall into 4 different categories.  Clicking
 
 Your goal is to reach 2000 points.  After submitting every answer you will be alerted via text box if you were correct as well as your current point total.  Upon reaching your goal you will alerted that you won and can either continue playing or use the manual reset button located at the bottom left of the page.
 
+<img src="https://github.com/mikec7592/mikec7592.github.io/blob/main/img/win.png" width="300" height="200">
+
 ### Loss Conditions
 
 If at any point your score drops to -200 you will be alerted via textbox and your game will automatically be reset.  There is also a manual reset button that can be used at any time located at the bottom left of the page.
