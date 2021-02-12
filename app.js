@@ -42,13 +42,13 @@ const createBoard = () => {
 }
 
 const checkScore = () => {
-    if (points >= 1000) {
+    if (points >= 2000) {
         alert('You have reached the score set for winning!  You can continue playing or hit the reset button at the bottom to start again!')
     } else if (points <= -200) {
         alert('You have lost this round. The board will now be reset. Please try again')
         location.reload()    
     } else {
-        alert('Keep playing.  Try to reach 1000 points!')
+        alert('Keep playing.  Try to reach 2000 points!')
     }
 }
 
