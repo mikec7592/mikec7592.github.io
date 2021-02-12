@@ -1,6 +1,7 @@
 # mikec7592.github.io
 
 ## My First Project -Jeopardy
+Play it here --> [My Jeopardy] (https://mikec7592.github.io/)
 
 ### Completely done in Javascript
 
