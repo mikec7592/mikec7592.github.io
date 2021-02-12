@@ -44,6 +44,7 @@ const checkScore = () => {
         alert('You have reached the score set for winning!  You can continue playing or hit the reset button at the bottom to start again!')
     } else if (points <= -200) {
         alert('You have lost this round. Please use the reset button below and try again')
+        
     } else {
         alert('Keep playing.  Try to reach 1000 points!')
     }
@@ -79,7 +80,7 @@ const onSubmit = (event) => {
         alert('You were correct!  Current score: ' + points)
     } 
     else {$(currentBox).removeClass('selected').addClass('incorrect').text('X');
-        points += parseInt(value)
+        points -= parseInt(value)
         alert('Sorry, looks like that was incorrect. Current score: '+ points)
     }
     checkScore()
