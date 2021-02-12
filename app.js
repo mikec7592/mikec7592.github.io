@@ -8,10 +8,11 @@ let points = 0
 let value; 
 
 
+// //////////////////    On Page Load    \\\\\\\\\\\\\\\\\\
 
 $(() => {
     createBoard()
-
+    //  note: location.reload is the same as using the refresh button built into browsers
     $('button').on('click', location.reload)
 
     $('td').on('click', onChoiceClick) 
@@ -20,6 +21,8 @@ $(() => {
 })
 
 
+
+// ////////////////     Functions     \\\\\\\\\\\\\\\
 
 const createBoard = () => {
     let amount = 100;
@@ -31,6 +34,7 @@ const createBoard = () => {
 
     for (let i = 0; i < 5; i++) {
         $('<tr>').attr('id', amount).appendTo('tbody');
+        // This condition is needed in order to keep the columns at 4 while still creating 5 rows.  I recieved help from a friend on figuring out how to get the 4 columns with 5 rows into my loop correctly.
         if(Object.keys(catQuestions)[i] != null) {
             $('<th>').addClass('box').text(Object.keys(catQuestions)[i]).appendTo('thead');
         }
@@ -56,6 +60,7 @@ const checkScore = () => {
 
 const onChoiceClick  = (event) => {
     console.log(event.currentTarget.id);
+    // splitting the previosly assinged id so that its put into an array and both pieces can be accessed seperately.
     let category = (event.target.id).split(' ');
     let name = category[0];
     value = category[1];
@@ -66,6 +71,7 @@ const onChoiceClick  = (event) => {
       for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
         let answer = Object.keys(catQuestions[name][value].Answers)[i];
         let answerValue = Object.values(catQuestions[name][value].Answers)[i].value;
+        //  The required attribute forces the user to select an option before continuing on.
         $('<input type ="radio" name="Answers" value="'+ answerValue +'"required>').appendTo('form')
         $('<label for="' + answer +'">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
     } 
@@ -75,6 +81,7 @@ const onChoiceClick  = (event) => {
 const onSubmit = (event) => {
     console.log()
     event.preventDefault()
+    //  this is to capture the value from the selcted radio buttons which is used in the condtional below it
     let $selection = $('input[name = Answers]:checked', 'form').val()
     if($selection === 'true') {
         $(currentBox).removeClass('selected').addClass('correct').text('O')
@@ -85,6 +92,7 @@ const onSubmit = (event) => {
         points -= parseInt(value)
         alert('Sorry, looks like that was incorrect. Current score: '+ points)
     }
+    // alerting the user of their current score and then removing the elements from the board. (The answers from the last selected box are cleared)
     checkScore()
     $('form').children().remove()
     
