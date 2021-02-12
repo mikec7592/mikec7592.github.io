@@ -39,6 +39,15 @@ const createBoard = () => {
     }
 }
 
+const checkScore = () => {
+    if (points >= 1000) {
+        alert('You have reached the score set for winning!  You can continue playing or hit the reset button at the bottom to start again!')
+    } else if (points <= -200) {
+        alert('You have lost this round. Please use the reset button below and try again')
+    } else {
+        alert('Keep playing.  Try to reach 1000 points!')
+    }
+}
 
 
 
@@ -73,7 +82,7 @@ const onSubmit = (event) => {
         points += parseInt(value)
         alert('Sorry, looks like that was incorrect. Current score: '+ points)
     }
-
+    checkScore()
     $('form').children().remove()
     
 }
