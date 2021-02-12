@@ -66,7 +66,7 @@ const onChoiceClick  = (event) => {
     value = category[1];
     $(event.currentTarget).addClass('selected').text(catQuestions[name][value].Question);
     currentBox = $(event.currentTarget);
-    console.log(value)
+    // console.log(value)
 
       for  (let i = 0; i < Object.keys(catQuestions[name][value].Answers).length; i++) {
         let answer = Object.keys(catQuestions[name][value].Answers)[i];
@@ -79,10 +79,10 @@ const onChoiceClick  = (event) => {
 }
 
 const onSubmit = (event) => {
-    console.log()
     event.preventDefault()
     //  this is to capture the value from the selcted radio buttons which is used in the condtional below it
     let $selection = $('input[name = Answers]:checked', 'form').val()
+
     if($selection === 'true') {
         $(currentBox).removeClass('selected').addClass('correct').text('O')
         points += parseInt(value)
@@ -120,7 +120,7 @@ const catQuestions = {
         }
     },
         200: {
-            Question: 'Your body produces this in high quantity when sick',
+            Question: 'Your body produces this in high quantity in response to a sickness',
             Answers: {
                 'Red blood cells': {
                     value: false
