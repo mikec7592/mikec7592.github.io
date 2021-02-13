@@ -6,6 +6,7 @@ let currentBox;
 let score;
 let points = 0
 let value; 
+let formFull = false
 
 
 // //////////////////    On Page Load    \\\\\\\\\\\\\\\\\\
@@ -61,6 +62,7 @@ const checkScore = () => {
 const onChoiceClick  = (event) => {
     console.log(event.currentTarget.id);
     // splitting the previosly assinged id so that its put into an array and both pieces can be accessed seperately.
+    if (formFull == false) {
     let category = (event.target.id).split(' ');
     let name = category[0];
     value = category[1];
@@ -76,6 +78,8 @@ const onChoiceClick  = (event) => {
         $('<label for="' + answer +'">').text(Object.keys(catQuestions[name][value].Answers)[i]).appendTo('form')
     } 
     $('<input type="submit" value="Submit" >').appendTo('form')
+    formFull = true
+}
 }
 
 const onSubmit = (event) => {
@@ -95,7 +99,7 @@ const onSubmit = (event) => {
     // alerting the user of their current score and then removing the elements from the board. (The answers from the last selected box are cleared)
     checkScore()
     $('form').children().remove()
-    
+    formFull = false
 }
 
 
